@@ -1,0 +1,30 @@
+Написать приложение вычисляющее факториал. Число пользователь вводит с клавиатуры.
+Пример:
+Ввод:
+  3
+Вывод:
+  6
+Класс приложения должен называться FactorialIter
+
+Case1: Success
+Precondition:
+    package p1;
+    import java.util.Scanner;
+    public class FactorialIter {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        if(!scan.hasNextInt()) {
+            System.out.println("Неправильный ввод");
+            return;
+        }
+        int number = scan.nextInt();
+        int fib = 1;
+        for(int i=1; i<=number; i++) {
+            fib *= i;
+        }
+        System.out.println(fib);
+    }
+    }
+Result:
+    100
+    Задание выполнено

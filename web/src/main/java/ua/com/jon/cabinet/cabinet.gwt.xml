@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module rename-to='cabinet'>
+    <!-- Inherit the core Web Toolkit stuff.                        -->
+    <inherits name='com.google.gwt.user.User'/>
+
+    <!-- Inherit the default GWT style sheet.  You can change       -->
+    <!-- the theme of your GWT application by uncommenting          -->
+    <!-- any one of the following lines.                            -->
+    <inherits name='com.google.gwt.user.theme.standard.Standard'/>
+    <inherits name ='com.github.gwtbootstrap.Bootstrap'/>
+    <!-- <inherits name='com.google.gwt.user.theme.chrome.Chrome'/> -->
+    <!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/>     -->
+
+    <!-- Set up build for single default browser "chrome"           -->
+
+    <!-- values="ie6" />-->
+    <!-- values="ie8" />-->
+    <!-- values="gecko1_8" />-->
+    <!-- values="safari" />-->
+    <!-- values="opera" />-->
+    <!-- fallback-value="ie8" />-->
+    <!--<set-property name="user.agent" value="safari" />-->
+
+    <!-- Specify the app entry point class.                         -->
+    <entry-point class='ua.com.jon.cabinet.client.CabinetMain'/>
+    <!--<entry-point class='ua.com.jon.cabinet.weekend1.client.Example'/>-->
+
+    <source path='client'/>
+    <source path='shared'/>
+
+    <!--pay attention in this part-->
+    <source path='resources'/>
+    <replace-with class="ua.com.jon.cabinet.resources.ExampleConfigurator">
+        <when-type-is class="com.github.gwtbootstrap.client.ui.config.Configurator"/>
+    </replace-with>
+    <public path="resources">
+        <exclude name="** /*.java"/>
+        <exclude name="** /*.class"/>
+    </public>
+</module>

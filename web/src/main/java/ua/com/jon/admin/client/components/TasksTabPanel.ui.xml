@@ -1,0 +1,90 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'
+             xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
+    <g:HTMLPanel ui:field="groupPanel">
+        <!--<b:Container> -->
+        <!--    <b:Container> -->
+
+        <b:ButtonGroup>
+            <b:Button ui:field='refreshAllBtn'>Обновить все задания</b:Button>
+            <b:Button ui:field='sendTasksBtn'>Выдать задания</b:Button>
+            <b:Button ui:field='saveGroupsBtn'>Сохранить группу</b:Button>
+        </b:ButtonGroup>
+        <b:Modal ui:field="sendConfirm" title="Выдать задания" backdrop="STATIC"
+                 keyboard="true" animation="true" height="80%" width="60%">
+            <!--<g:Label>Код</g:Label>-->
+            <g:Label>Группа</g:Label><b:TextBox ui:field="group"/>
+            <g:Label>Этап</g:Label><b:TextBox ui:field="sprint"/>
+            <b:WellNavList ui:field="tasksToSend">
+                <b:NavHeader>Выдаваемые задания</b:NavHeader>
+            </b:WellNavList>
+            <b:ModalFooter>
+                <b:Button ui:field="sendTasks" icon="FILE" type="PRIMARY" enabled="true">Выдать</b:Button>
+                <b:Button ui:field="close" enabled="true">Отмена</b:Button>
+            </b:ModalFooter>
+        </b:Modal>
+        <b:Well>
+            <b:FluidRow>
+                <b:Column size="5">
+                    <b:ValueListBox ui:field="sprintsListBox"/>
+
+                </b:Column>
+                <b:Column size="2">
+
+                </b:Column>
+                <b:Column size="5">
+                    <b:ValueListBox ui:field="groupsListBox"/>
+                </b:Column>
+            </b:FluidRow>
+            <b:FluidRow>
+
+                <b:Column size="5">
+                    <b:Container>
+                        <b:Nav alignment="LEFT">
+                            <!--<b:WellNavList u
+                            i:field="availableTasks" width="500px">-->
+                            <b:WellNavList ui:field="availableTasks">
+                                <b:NavHeader>Доступные задания</b:NavHeader>
+                            </b:WellNavList>
+                        </b:Nav>
+                    </b:Container>
+                </b:Column>
+                <b:Column size="2">
+                    <!--<b:Container>
+                        <b:Nav alignment="LEFT" >-->
+                    <!--<b:Button ui:field='add' type="WARNING">Add</b:Button>-->
+                    <b:Button ui:field='add' block="true" type="INFO">}}}</b:Button>
+                    <!--        </b:Nav>
+                        </b:Container>-->
+                    <!--              <b:Container>
+                                      <b:Nav alignment="LEFT">-->
+                    <!--<b:Button ui:field='remove' type="WARNING">Remove</b:Button>-->
+                    <b:Button ui:field='remove' block="true" type="INFO">{{{</b:Button>
+                    <!--                </b:Nav>
+                                </b:Container>-->
+                </b:Column>
+                <b:Column size="5">
+                    <b:Container>
+                        <b:Nav alignment="LEFT">
+                            <!--                        <b:NavPills>
+                                                        <b:DropdownButton ui:field="groupsListBox"/>
+                                                    </b:NavPills>-->
+
+                            <!--<b:WellNavList ui:field="groupTasks" width="500px">-->
+                            <b:WellNavList ui:field="groupTasks">
+                                <b:NavHeader>Задания для группы</b:NavHeader>
+                            </b:WellNavList>
+                        </b:Nav>
+                    </b:Container>
+
+                </b:Column>
+            </b:FluidRow>
+            <b:SimplePager display="{cellTable}" location="RIGHT" fastForwardRows="15" />
+            <b:CellTable ui:field='cellTable' title=''
+                         bordered="true" condensed="true" striped="true">
+            </b:CellTable>
+        </b:Well>
+        <!--</b:Container>-->
+        <!--</b:Container>-->
+    </g:HTMLPanel>
+</ui:UiBinder>

@@ -1,0 +1,38 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
+    <g:HTMLPanel ui:field="basePanel">
+        <b:Container>
+            <b:Container>
+                <b:Heading size="4">Панель администратора</b:Heading>
+            </b:Container>
+            <b:TabPanel>
+                <b:TabPane active="true" heading="Выдать задания">
+                    <g:FlowPanel ui:field="tasksHolderPanel"/>
+                </b:TabPane>
+
+                <b:TabPane heading="Создание Группы">
+                    <g:FlowPanel ui:field="usersHolderPanel"/>
+                </b:TabPane>
+
+                <b:TabPane heading="Группы">
+                    <g:FlowPanel ui:field="groupsManageHolderPanel"/>
+                </b:TabPane>
+
+                <b:TabPane heading="Задания">
+                    <g:FlowPanel ui:field="tasksManageHolderPanel"/>
+                </b:TabPane>
+
+                <b:TabPane heading="Этапы">
+                    <g:FlowPanel ui:field="sprintsHolderPanel"/>
+                </b:TabPane>
+
+                <b:TabPane heading="Проверка">
+                    <g:FlowPanel ui:field="tasksOverviewHolderPanel"/>
+                </b:TabPane>
+
+            </b:TabPanel>
+        </b:Container>
+    </g:HTMLPanel>
+</ui:UiBinder>

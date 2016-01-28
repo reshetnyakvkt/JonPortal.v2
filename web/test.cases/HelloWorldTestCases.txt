@@ -1,0 +1,52 @@
+Case1: Hello world
+Precondition:
+    class A {
+
+    }
+Result:
+    0
+    Ошибка компиляции: Нет класса с таким именем
+
+Case2: Hello world
+Precondition:
+    class HelloWorld {
+
+    }
+Result:
+    10
+    Метод main должен быть 'public static void main(String[] args)'
+
+Case3: Hello world
+Precondition:
+    class HelloWorld {
+        public static void main() {
+        }
+    }
+Result:
+    10
+    Метод main должен быть 'public static void main(String[] args)'
+
+Case4: Hello world
+Precondition:
+    class HelloWorld {
+        public static void main(String[] args) {
+        }
+    }
+Result:
+    10
+    Метод main должен быть 'public static void main(String[] args)'
+
+Case5:
+Precondition:
+        public class HelloWorld {
+            public static void main(String[] args) {
+                System.out.println("Hello world");
+            }
+        }
+Result:
+    100
+
+CaseX:
+Precondition:
+
+Result:

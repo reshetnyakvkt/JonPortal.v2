@@ -1,0 +1,31 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
+    <g:HTMLPanel ui:field="basePanel">
+<!--        <b:Row>
+            <b:Button ui:field='refreshTasksBtn' type="DEFAULT">Обновить задания</b:Button>
+        </b:Row>-->
+        <b:Container>
+<!--            <b:Container>
+                <b:Heading size="4" ui:field="userName"/>
+            </b:Container>-->
+            <b:TabPanel>
+                <b:TabPane active="true" heading="Ваши задания">
+                    <g:FlowPanel ui:field="userTasksHolderPanel"/>
+                </b:TabPane>
+
+                <b:TabPane heading="Задания Группы">
+                    <g:FlowPanel ui:field="groupTasksHolderPanel"/>
+                </b:TabPane>
+
+                <b:TabPane heading="Группа">
+                    <g:FlowPanel ui:field="groupInfoHolderPanel"/>
+                </b:TabPane>
+                <b:TabLink ui:field="admin" href="/admin/index.html">
+                    <!--<b:Button ui:field="admin"/>-->
+                </b:TabLink>
+            </b:TabPanel>
+        </b:Container>
+    </g:HTMLPanel>
+</ui:UiBinder>

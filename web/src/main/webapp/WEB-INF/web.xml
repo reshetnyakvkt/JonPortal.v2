@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+		  http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            /WEB-INF/context/applicationContext.xml,
+            /WEB-INF/context/security.xml,
+            /WEB-INF/context/data.xml
+        </param-value>
+    </context-param>
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <filter>
+        <filter-name>encodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <async-supported>true</async-supported>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>forceEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>encodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <servlet>
+        <servlet-name>dispatcher</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>/WEB-INF/context/dispatcher-servlet.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+        <async-supported>true</async-supported>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>dispatcher</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+    <!-- Spring Security -->
+    <filter>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <filter-class>
+            org.springframework.web.filter.DelegatingFilterProxy
+        </filter-class>
+        <async-supported>true</async-supported>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>springRequestFilter</filter-name>
+        <filter-class>org.springframework.web.filter.RequestContextFilter</filter-class>
+        <async-supported>true</async-supported>
+    </filter>
+    <filter-mapping>
+        <filter-name>springRequestFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <session-config>
+        <!--<session-timeout>259200</session-timeout>-->
+        <!--<session-timeout>10</session-timeout>-->
+        <session-timeout>2592000</session-timeout> <!--month-->
+    </session-config>
+
+    <!-- Spring 4 GWT -->
+    <servlet>
+        <servlet-name>springGwtRemoteServiceServlet</servlet-name>
+        <servlet-class>org.spring4gwt.server.SpringGwtRemoteServiceServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>springGwtRemoteServiceServlet</servlet-name>
+        <url-pattern>/cabinet/service/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>springGwtRemoteServiceServletAdmin</servlet-name>
+        <servlet-class>org.spring4gwt.server.SpringGwtRemoteServiceServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>springGwtRemoteServiceServletAdmin</servlet-name>
+        <url-pattern>/admin/service/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>springGwtRemoteServiceServletExamine</servlet-name>
+        <servlet-class>org.spring4gwt.server.SpringGwtRemoteServiceServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>springGwtRemoteServiceServletExamine</servlet-name>
+        <url-pattern>/examine/service/*</url-pattern>
+    </servlet-mapping>
+
+</web-app>

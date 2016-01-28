@@ -1,0 +1,14 @@
+Написать собственную реализацию класс ArrayList содержащий целые чилса со следующими методами:
+boolean add(Integer)
+boolean add(int index, Integer)
+Integer remove(int index)
+Integer set(int index, Integer)
+int indexOf(Integer) - должен возвращать индекс элемента, или -1, если список не содержит этот индекс
+boolean contains(Integer) - выясняет есть ли такой элемент в списке
+int size()
+void clear() - удаляет все элементы из списка
+boolean equals(MyArrayList) - сравнивает два списка
+Integer get(index) throws IndexOutOfBoundsException
+String toString() - возвращает строчное представление списка в формате: {1-2-4-2}
+
+Нельзя использовать коллекции, можно только массивы.

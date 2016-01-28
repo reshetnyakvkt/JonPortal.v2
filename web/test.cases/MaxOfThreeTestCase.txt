@@ -1,0 +1,59 @@
+Написать приложение выводящее на экран наибольшее и наименьшее из трех чисел
+Пользователь вводит числа с клавиатуры
+
+Пример:
+Ввод:
+  3
+  2
+  10
+Вывод:
+  10
+  2
+
+Название класса должно быть MaxOfThree
+
+Case1: Success
+Precondition:
+    package lesson;
+    import java.util.Scanner;
+    public class MaxOfThree {
+        public static void main(String[] args) {
+            Scanner scan = new Scanner(System.in);
+            int first = scan.nextInt();
+            int second = scan.nextInt();
+            int third = scan.nextInt();
+            int max = 0;
+            int min = 0;
+        if(first > second) {
+            if(first > third) {
+                max = first;
+            } else {
+                max = third;
+            }
+        } else {
+            if(second > third) {
+                max = second;
+            } else {
+                max = third;
+            }
+        }
+        if(first < second) {
+            if(first < third) {
+                min = first;
+            } else {
+                min = third;
+            }
+        } else {
+            if(second < third) {
+                min = second;
+            } else {
+                min = third;
+            }
+        }
+            System.out.println(max);
+            System.out.println(min);
+        }
+    }
+Result:
+    100
+    Задание выполнено

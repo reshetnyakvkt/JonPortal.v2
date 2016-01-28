@@ -1,0 +1,95 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'
+             xmlns:b="urn:import:com.github.gwtbootstrap.client.ui"
+             xmlns:list="urn:import:ua.com.jon.admin.client.components.list">
+    <g:HTMLPanel ui:field="sprintsPanel">
+        <!--<b:Container>-->
+            <!--<b:Container>-->
+
+                <b:ButtonGroup>
+                    <b:Button ui:field='refreshSprintsBtn'>Обновить этапы</b:Button>
+                    <b:Button ui:field='createSprintBtn'>Добавить этап</b:Button>
+                    <b:Button ui:field='saveSprintBtn'>Сохранить</b:Button>
+                    <!--<b:Button ui:field='editSprintBtn'>Редактировать этап</b:Button>-->
+                </b:ButtonGroup>
+                <b:Well>
+                    <b:FluidRow>
+                        <b:Column size="12">
+                            <b:SimplePager ui:field="pager" display="{cellTable}" location="RIGHT" fastForwardRows="15" />
+                            <b:CellTable ui:field='cellTable' title=''
+                                         bordered="true" condensed="true" striped="true"/>
+                        </b:Column>
+                        <!--
+                                                <b:Column size="2">
+                                                    <b:Label>Имя этапа</b:Label>
+                                                </b:Column>
+                                                <b:Column size="5">
+                                                    <b:TextBox ui:field="sprintNameTextBox"/>
+
+                                                </b:Column>
+                        -->
+                    </b:FluidRow>
+<!--
+                    <b:FluidRow>
+
+                        <b:Column size="5">
+                            <b:Container>
+                                <b:ProgressBar ui:field="sprintsProgress" type="ANIMATED" percent="100"/>
+                                <b:Nav alignment="LEFT">
+                                    <column2:SelectableNavList ui:field="sprintNavList" header="Этапы">
+                                        &lt;!&ndash;<b:NavHeader>Этапы</b:NavHeader>&ndash;&gt;
+                                    </column2:SelectableNavList>
+
+                                    &lt;!&ndash;
+                                                                        <b:WellNavList ui:field="sprintNavList">
+
+                                                                            <b:NavHeader>Этапы</b:NavHeader>
+                                                                        </b:WellNavList>
+                                    &ndash;&gt;
+                                </b:Nav>
+                            </b:Container>
+                        </b:Column>
+                        <b:Column size="2">
+                            <b:Label>Описание этапа</b:Label>
+                        </b:Column>
+                        <b:Column size="5">
+                            <b:Container>
+                                <b:Nav alignment="LEFT">
+                                    &lt;!&ndash;<b:WellNavList ui:field="groupUsers">&ndash;&gt;
+                                    &lt;!&ndash;<b:NavHeader>Пользователи в группе</b:NavHeader>&ndash;&gt;
+                                    &lt;!&ndash;</b:WellNavList>&ndash;&gt;
+                                    <b:TextArea ui:field="sprintDesc">
+                                        &lt;!&ndash;<b:NavHeader>Пользователи в области</b:NavHeader>&ndash;&gt;
+                                    </b:TextArea>
+                                    <b:Button ui:field='saveSprintBtn'>Сохранить</b:Button>
+                                    &lt;!&ndash;
+                                                                        <b:CodeBlock>
+                                                                            /*ss */\n
+                                                                            pablic class A {\n
+                                                                            public A() {\n
+                                                                            super();\n
+                                                                            }\n
+                                                                            }\n
+                                                                        </b:CodeBlock>
+                                    &ndash;&gt;
+                                </b:Nav>
+                            </b:Container>
+
+                        </b:Column>
+                    </b:FluidRow>
+-->
+<!--                    <b:FluidRow>
+                        <b:Column size="5"></b:Column>
+                        <b:Column size="2"></b:Column>
+                        <b:Column size="5">
+                            <b:Button ui:field='saveSprintBtn'>Сохранить</b:Button>
+                        </b:Column>
+                    </b:FluidRow>-->
+                </b:Well>
+            <!--</b:Container>-->
+        <!--</b:Container>-->
+
+
+    </g:HTMLPanel>
+</ui:UiBinder>
+

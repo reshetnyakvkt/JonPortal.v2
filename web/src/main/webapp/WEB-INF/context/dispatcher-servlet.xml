@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:context="http://www.springframework.org/schema/context"
+             xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+    <annotation-driven />
+    <context:component-scan base-package="ua.com.jon.common.controller"/>
+    <context:component-scan base-package="ua.com.jon.admin.controller"/>
+    <context:component-scan base-package="ua.com.jon.cabinet.controller"/>
+    <context:component-scan base-package="ua.com.jon.examinator.controller"/>
+    <context:component-scan base-package="ua.com.jon.tasks.validator.controller"/>
+    <context:component-scan base-package="ua.com.jon.auth.controller"/>
+
+    <context:property-placeholder location="classpath:/conf.properties" />
+
+    <default-servlet-handler/>
+    <beans:bean id="viewResolver" class=" org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <beans:property name="prefix">
+            <beans:value>/WEB-INF/jsp/</beans:value>
+        </beans:property>
+        <beans:property name="suffix">
+            <beans:value>.jsp</beans:value>
+        </beans:property>
+        <beans:property name="order"  value="3"/>
+    </beans:bean>
+
+
+  <!-- Maps the request through to a concrete controller instance -->
+<!--
+  <beans:bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+    <beans:property fileName="mappings">
+      <beans:value>
+        /**/quote.rpc=gwtRpcController
+      </beans:value>
+    </beans:property>
+  </beans:bean>
+-->
+
+  <!-- GwtRpcController wraps our service in order to decode the incoming -->
+  <!-- request then delegates processing of the call to the POJO service -->
+  <!-- and then encodes the return value forwarding the response. -->
+  <!-- TODO: Remove controller later -->
+<!--
+  <beans:bean id="quoteController" class="ua.com.jon.gwt.server.GwtRpcController">
+    <beans:property fileName="remoteService">
+      <beans:bean class="ua.com.jon.gwt.server.QuoteServiceImpl" />
+    </beans:property>
+  </beans:bean>
+-->
+
+</beans:beans>

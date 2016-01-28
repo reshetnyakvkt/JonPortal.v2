@@ -1,0 +1,135 @@
+body {
+    background-color: #D0D0D0;
+    /*font-family: monospace; */
+    font-family: sans-serif;
+    font-size: 15px;
+    /*text-shadow: 1px 1px 0.5px rgb(206, 191, 191);*/
+}
+
+.backGround {
+    width: 90%;
+    height: auto;
+    min-height: 800px;
+    margin: auto;
+    padding: 0;
+    background-color: #e2e2e2;
+    opacity: 0.9;
+    border: solid 1px #8b8b8b;
+    border-radius: 5px;
+    box-shadow: 1px 1px 10px #8b8b8b;
+    overflow: auto;
+}
+
+.header {
+    height: 100px;
+    line-height: 100px;
+    background-color: #c3c3c3;
+    box-shadow: 1px 1px 3px #8b8b8b;
+    font-size: 1.4em;
+    text-align: center;
+    vertical-align: bottom;
+}
+
+.textBlock {
+    margin: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    font-size: 1.2em;
+    text-align: justify;
+    border-radius: 5px 2px;
+    text-indent: 10px;
+}
+
+
+.editField {
+    margin: 10px;
+    padding: 10px;
+    border: solid 1px #d9dcdc;
+    height: 300px;
+    overflow: auto;
+    white-space: pre;
+}
+
+.console {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid;
+    min-height: 100px;
+    background-color: #9aa5e2;
+    color: #fafafa;
+    overflow: auto;
+    white-space: pre;
+}
+
+.button {
+    position: relative;
+}
+
+
+
+.listItem {
+    margin: 3px 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    text-align: justify;
+    font-size: 1.2em;
+    border-radius: 6px 3px;
+    border: 1px solid #8c8a8e;
+}
+
+.listItem:hover {
+    border: 1px solid #6f6f6f;
+    box-shadow: 1px 1px 1px #6f6f6f;
+}
+
+/*a,a:active,a:visited,a:before, a:-webkit-any-link {
+    text-decoration: none;
+    color: #49afcd;
+    /!*display: block;*!/
+    text-shadow: 0 1px 20px rgba(255, 255, 255, 0.75);
+}*/
+
+.barTabs {
+    font-family: monospace;
+    background-color: #ececec;
+    border: solid  #ececec;
+    border-width: 1px 1px 0 1px;
+    z-index: 0;
+}
+
+.barTabActive {
+    position: relative;
+    display: inline-block;
+    background-color: #f4f4f4;
+    padding: 5px;
+    margin: 0 0 0 -5px;
+    border: solid #b7b7b7;
+    border-radius: 4px 6px 0 0;
+    border-width: 1px 1px 0 1px;
+    z-index: 10;
+}
+
+.barTabNoActive {
+    position: relative;
+    display: inline-block;
+    background-color: #8c8c8c;
+    margin: 0 -2px;
+    padding: 5px;
+    border: solid #636363;
+    border-radius: 2px 4px 0 0;
+    border-width: 1px 1px 0 1px;
+    z-index: 0;
+}
+
+.barTabBody {
+    box-sizing: content-box;
+    height: auto;
+    margin: 15px;
+    padding: 5px;
+    background-color: #f4f4f4;
+    opacity: 0.9;
+    border: solid 1px #f1f4f4;
+    border-radius: 5px;
+    box-shadow: 1px 1px 10px #bbb;
+    overflow: hidden;
+}

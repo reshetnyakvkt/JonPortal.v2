@@ -1,0 +1,41 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'
+             xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
+    <g:HTMLPanel>
+        <b:Heading size="3" ui:field="userName"/>
+        <b:Container>
+            <b:TabPanel>
+                <b:TabPane active="true" heading="Ваши задания">
+                    <b:Well>
+                        <b:Label>Выберите этап</b:Label>
+                        <b:ValueListBox ui:field="sprintsListBox"/>
+                        <b:ButtonGroup>
+                            <b:Button ui:field='refreshTasksBtn' type="INFO">Обновить задания</b:Button>
+                        </b:ButtonGroup>
+                        <b:Heading size="4">Ваши задания</b:Heading>
+                        <b:CellTable ui:field='cellTable' title='Для просмотра результатов теста выберите задание'
+                                     tabIndex='3'
+                                     bordered="true" condensed="true" striped="true">
+
+                        </b:CellTable>
+                        <!--<b:Alert ui:field='alert' type="SUCCESS" visible="false" close="false" animation="true">-->
+
+                        <!--</b:Alert>-->
+                        <b:FluidRow>
+                            <!--<b:Heading size="3">Result description</b:Heading>-->
+                            <b:TextArea ui:field='taskText' readOnly="true" width="100%" height="40%" visible="true">
+                            </b:TextArea>
+                            <b:TextArea ui:field='result' readOnly="true" width="100%" height="40%" visible="true">
+                            </b:TextArea>
+                        </b:FluidRow>
+
+                    </b:Well>
+                    <!--<g:FlowPanel ui:field="tasksHolderPanel"/>-->
+                </b:TabPane>
+                <b:TabPane active="false" heading="Все задания">
+
+                </b:TabPane>
+            </b:TabPanel>
+        </b:Container>
+    </g:HTMLPanel>
+</ui:UiBinder>

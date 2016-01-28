@@ -1,0 +1,18 @@
+grant {
+ permission java.util.PropertyPermission "idea.launcher.bin.path", "read";
+ permission java.util.PropertyPermission "idea.launcher.port", "read";
+ permission java.util.PropertyPermission "sun.tools.ToolProvider", "read";
+ permission java.lang.RuntimePermission "loadLibrary./home/al1/install/java/idea-IU-129.239/bin/libbreakgen.so";
+ permission java.lang.RuntimePermission "createClassLoader", "read";
+ permission java.io.PropertyPermission "user.dir", "read";
+ // temporary property
+ permission java.io.PropertyPermission "java.class.path", "read";
+ permission java.io.FilePermission "${user.dir}/text.txt", "read,write";
+ //permission java.io.FilePermission ".class", "read";
+ permission java.lang.RuntimePermission "accessDeclaredMembers", "read";
+ permission java.lang.RuntimePermission "setIO", "write";
+
+  // Remote executor permissions
+  permission java.net.SocketPermission "localhost:1024-", "listen,resolve,accept";
+  permission java.net.SocketPermission "127.0.0.1:1024-", "listen,resolve,accept";
+};

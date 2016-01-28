@@ -1,0 +1,40 @@
+Case1: Wrong message
+Precondition:
+    import java.util.Scanner;
+    public class Greeting {
+        public static void main(String[] args) {
+            System.out.println("Hello world");
+        }
+    }
+Result:
+    10
+    Ожидается строка Здравствуйте Oksana
+    , но выводится [Hello world
+    ]
+
+Case2: Throw exception
+Precondition:
+    package lesson;
+    import java.util.Scanner;
+    public class Greeting {
+        public static void main(String[] args) {
+            throw new RuntimeException();
+        }
+    }
+Result:
+    10
+    Во время выполнения метода main произошла ошибка java.lang.RuntimeException
+
+Case3: Success
+Precondition:
+    package lesson;
+    import java.util.Scanner;
+    public class Greeting {
+        public static void main(String[] args) {
+            Scanner scan = new Scanner(System.in);
+            System.out.println("Здравствуйте " + scan.nextLine());
+        }
+    }
+Result:
+    100
+    Задание выполнено

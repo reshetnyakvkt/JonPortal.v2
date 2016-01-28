@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+    <bean class="com.jon.tron.context.AppConfig"/>
+    <!--<import resource="security.xml"/>-->
+    <!--<annotation-driven />-->
+    <context:component-scan base-package="ua.com.jon.common.service"/>
+    <context:component-scan base-package="ua.com.jon.common.dao"/>
+    <context:component-scan base-package="ua.com.jon.examinator.server"/>
+    <context:component-scan base-package="ua.com.jon.tasks.validator.codeValidator"/>
+    <context:component-scan base-package="ua.com.jon.utils"/>
+    <context:component-scan base-package="ua.com.jon.cabinet.server"/>
+    <context:component-scan base-package="ua.com.jon.auth.service"/>
+    <context:component-scan base-package="ua.com.jon.admin"/>
+
+    <bean id="conf" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <!-- TODO move to resources -->
+        <property name="location" value="classpath:/conf.properties"/>
+
+    </bean>
+
+    <bean id="restTemplate" class="org.springframework.web.client.RestTemplate">
+        <property name="messageConverters">
+            <bean id="messageConverter" class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter">
+                <property name="marshaller" ref="xstreamMarshaller" />
+                <property name="unmarshaller" ref="xstreamMarshaller" />
+<!--
+                <property fileName="supportedMediaTypes">
+                    <list>
+                        <value>#{T(org.springframework.http.MediaType).TEXT_XML_VALUE}</value>
+                    </list>
+                </property>
+-->
+            </bean>
+        </property>
+    </bean>
+
+    <mvc:annotation-driven/>
+
+    <mvc:resources mapping="/robots.txt" location="/robots.txt" order="0"/>
+
+<!--
+    <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+        <property fullyQualifiedName="ignoreAcceptHeader" value="true" />
+        <property fullyQualifiedName="favorPathExtension" value="false" />
+        <property fullyQualifiedName="order" value="1" />
+        <property fullyQualifiedName="mediaTypes">
+            <map>
+                <entry key="xml" value="application/xml" />
+            </map>
+        </property>
+        <property fullyQualifiedName="defaultViews">
+            <list>
+                <ref bean="xmlView"/>
+            </list>
+        </property>
+    </bean>
+-->
+
+    <bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+        <property name="order" value="2"/>
+    </bean>
+
+    <bean id="xmlView"
+          class="org.springframework.web.servlet.view.xml.MarshallingView">
+        <property name="contentType" value="application/xml;charset=UTF-8"/>
+        <property name="marshaller" ref="marshaller"/>
+<!--
+        <constructor-arg>
+            <ref bean="xstreamMarshaller"/>
+        </constructor-arg>
+-->
+    </bean>
+
+    <bean id="xstreamMarshaller" class="org.springframework.oxm.xstream.XStreamMarshaller">
+        <property name="autodetectAnnotations" value="true"/>
+        <property name="annotatedClasses">
+            <array>
+                <value>ua.com.jon.auth.domain.AssemblaUsers</value>
+                <value>ua.com.jon.auth.domain.AssemblaUser</value>
+                <value>ua.com.jon.auth.domain.AssemblaSpace</value>
+                <value>ua.com.jon.auth.domain.AssemblaSpaces</value>
+                <!--<value>ua.com.jon.common.dto.TaskForTestDTO</value>-->
+            </array>
+        </property>
+    </bean>
+
+    <bean id="marshaller" class="org.springframework.oxm.xstream.XStreamMarshaller">
+        <property name="autodetectAnnotations" value="true"/>
+        <property name="annotatedClasses">
+            <array>
+                <value>ua.com.jon.common.dto.TaskForTestDTO</value>
+            </array>
+        </property>
+    </bean>
+</beans>

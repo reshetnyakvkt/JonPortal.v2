@@ -1,0 +1,23 @@
+Написать приложение рисующее на экране линию из звёздочек. Длинну линии пользователь вводит с клавиатуры.
+Пример:
+Ввод:
+  4
+Вывод:
+  ****
+
+Case1: Success
+Precondition:
+    package p1;
+    import java.util.Scanner;
+    public class Line {
+    public static void main(String[] args) {
+       Scanner scan = new Scanner(System.in);
+       int length = scan.nextInt();
+       for(int i=0; i < length; i++) {
+           System.out.print('*');
+       }
+    }
+    }
+Result:
+    100
+    Задание выполнено

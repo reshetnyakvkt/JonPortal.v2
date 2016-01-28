@@ -1,0 +1,95 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'
+             xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
+  <g:HTMLPanel ui:field="tasksManagePanel">
+    <b:Container>
+      <b:Container>
+
+        <b:ButtonGroup>
+          <b:Button ui:field='refreshSprintsBtn'>Обновить этапы</b:Button>
+          <b:Button ui:field='createTaskBtn'>Создать задание</b:Button>
+          <b:Button ui:field='saveSprintsBtn'>Сохранить этапы</b:Button>
+        </b:ButtonGroup>
+        <b:Well>
+          <b:FluidRow>
+            <b:Column size="12">
+              <b:ValueListBox ui:field="sprintsListBox" visible="false"/>
+              <b:ProgressBar ui:field="sprintsProgress" type="ANIMATED" percent="100"/>
+              <b:SimplePager display="{cellTable}" location="RIGHT" fastForwardRows="15" />
+              <b:CellTable ui:field='cellTable' title=''
+                           bordered="true" condensed="true" striped="true">
+              </b:CellTable>
+
+            </b:Column>
+            <!--
+                                    <b:Column size="5">
+                                        <b:TextBox ui:field="sprintNameTextBox"/>
+                                    </b:Column>
+            -->
+          </b:FluidRow>
+          <!--
+                              <b:FluidRow>
+
+                                  <b:Column size="5">
+                                      <b:Container>
+                                          <b:Nav alignment="LEFT">
+                                              <b:WellNavList ui:field="sprintTasks">
+                                                  <b:NavHeader>Задания по этапу</b:NavHeader>
+                                              </b:WellNavList>
+                                          </b:Nav>
+                                      </b:Container>
+                                  </b:Column>
+           &lt;!&ndash;                       <b:Column size="2">
+                                      <b:Button ui:field='add' block="true" type="INFO">}}}</b:Button>
+
+                                      <b:Button ui:field='remove' block="true" type="INFO">{{{</b:Button>
+
+                                  </b:Column>&ndash;&gt;
+                                  <b:Column size="5">
+                                      <b:Container>
+                                          <b:Nav alignment="LEFT">
+                                              &lt;!&ndash;<b:WellNavList ui:field="groupUsers">&ndash;&gt;
+                                                  &lt;!&ndash;<b:NavHeader>Пользователи в группе</b:NavHeader>&ndash;&gt;
+                                              &lt;!&ndash;</b:WellNavList>&ndash;&gt;
+                                              <b:TextArea ui:field="taskText">
+                                                  &lt;!&ndash;<b:NavHeader>Пользователи в области</b:NavHeader>&ndash;&gt;
+                                              </b:TextArea>
+                                              <b:CodeBlock>
+                                                  /*ss */\n
+                                                  pablic class A {\n
+                                                      public A() {\n
+                                                          super();\n
+                                                      }\n
+                                                  }\n
+                                              </b:CodeBlock>
+                                          </b:Nav>
+                                      </b:Container>
+
+                                  </b:Column>
+                              </b:FluidRow>
+          -->
+          <b:FluidRow>
+            <b:Column size="5">
+              <b:TextArea width="100%" height="45%" ui:field='textArea'/>
+            </b:Column>
+            <b:Column size="5">
+              <b:TextArea width="100%" height="45%" ui:field='materials'/>
+            </b:Column>
+            <!--
+            <b:CodeBlock>
+              /*ss */\n
+              pablic class A {\n
+              public A() {\n
+              super();\n
+              }\n
+              }\n
+            </b:CodeBlock>
+            -->
+          </b:FluidRow>
+        </b:Well>
+      </b:Container>
+
+
+    </b:Container>
+  </g:HTMLPanel>
+</ui:UiBinder>

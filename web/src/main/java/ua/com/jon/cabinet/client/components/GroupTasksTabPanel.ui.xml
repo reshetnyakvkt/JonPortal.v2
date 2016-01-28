@@ -1,0 +1,28 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'
+             xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
+    <g:HTMLPanel ui:field="groupTasksPanel">
+        <b:Container>
+
+                <b:ButtonGroup>
+                    <b:Button ui:field='refreshTasksBtn'>Обновить задания</b:Button>
+                </b:ButtonGroup>
+                <b:Well>
+                    <b:FluidRow>
+                        <b:Column size="12">
+                            <b:ProgressBar ui:field="sprintsProgress" type="ANIMATED" percent="100"/>
+                            <b:SimplePager display="{cellTable}" location="RIGHT" fastForwardRows="15" />
+                            <b:CellTable ui:field='cellTable' title=''
+                                         bordered="true" condensed="true" striped="true">
+                            </b:CellTable>
+
+                        </b:Column>
+                    </b:FluidRow>
+
+                    <b:CodeBlock width="100%" scrollable="true" ui:field='codeBlock'>
+
+                    </b:CodeBlock>
+                </b:Well>
+        </b:Container>
+    </g:HTMLPanel>
+</ui:UiBinder>
