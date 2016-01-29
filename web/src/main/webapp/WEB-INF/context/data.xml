@@ -27,7 +27,7 @@
     <context:component-scan base-package="ua.com.jon.quiz.dao"/>
     <context:component-scan base-package="ua.com.jon.quiz.service"/>
 
-    <tx:annotation-driven transaction-manager="transactionManager"/>
+    <!--<tx:annotation-driven transaction-manager="transactionManager"/>-->
 
     <bean id="jpaDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="${jdbc.driverClassName}"/>
@@ -56,34 +56,9 @@
             </value>
         </property>
     </bean>
-<!--
-    <bean id="jpaDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
-          destroy-methodName="close"
-          p:driverClass="${jdbc.driverClassName}"
-          p:jdbcUrl="${jdbc.url}"
-          p:sprintEvent="${jdbc.username}"
-          p:password="${jdbc.password}"
-          p:acquireIncrement="5"
-          p:idleConnectionTestPeriod="60"
-          p:maxPoolSize="100"
-          p:maxStatements="50"
-          p:minPoolSize="10" />
--->
-
-    <!-- Declare a JPA entityManagerFactory -->
-<!--
-    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
-          p:persistenceXmlLocation="./WEB-INF/persistence.xml"
-          p:persistenceUnitName="hibernatePersistenceUnit"
-          p:dataSource-ref="jpaDataSource"
-          p:jpaVendorAdapter-ref="hibernateVendor"/>
--->
 
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="jpaDataSource" />
-        <!--TODO: remove repsistance.xml-->
-        <!--<property fileName="persistenceXmlLocation" value="/WEB-INF/data/persistence.xml"/>-->
-        <!--<property fileName="persistenceUnitName" value="courcesPU"/>-->
         <property name="packagesToScan" value="ua.com.jon.common.domain"/>
 
         <property name="jpaVendorAdapter">
@@ -105,11 +80,7 @@
     <bean id="hibernateVendor" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"
           p:showSql="true"/>
 
-    <!-- Declare a transaction manager-->
-<!--
-    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"
-          p:entityManagerFactory-ref="entityManagerFactory"/>
--->
+
 
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory" />
@@ -120,5 +91,6 @@
 
 
     <tx:annotation-driven transaction-manager="myTransactionManager"/>
+    <!--<tx:annotation-driven transaction-manager="transactionManager"/>-->
 
 </beans>

@@ -10,12 +10,12 @@ import java.util.Set;
  * Created by Олег on 15.01.2016.
  */
 @Entity
-@Table(name = "QUIZ")
+@Table(name = "QUIZZES")
 public class Quiz {
 
     @Id
-    @GeneratedValue(generator = "quizGen", strategy = GenerationType.IDENTITY)
-    @TableGenerator(name = "quizGen", initialValue = 101, allocationSize = 1)
+    @GeneratedValue(/*generator = "quizGen", */strategy = GenerationType.AUTO)
+//    @TableGenerator(name = "quizGen", initialValue = 101, allocationSize = 1)
     @Column(name = "QUIZ_ID")
     private Long id;
 
@@ -38,6 +38,13 @@ public class Quiz {
         this.description = description;
         this.timeLimit = timeLimit;
         this.questions = questions;
+    }
+
+    public Quiz(String description, Long timeLimit, Set<Question> questions, Sprint sprint) {
+        this.description = description;
+        this.timeLimit = timeLimit;
+        this.questions = questions;
+        this.sprint = sprint;
     }
 
     public Long getId() {

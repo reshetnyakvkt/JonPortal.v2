@@ -83,7 +83,7 @@
                         </div>
                         <button type="submit" class="btn btn-default">Submit</button>
                     </form>--%>
-                    <ul class="nav navbar-nav navbar-right">
+                    <ul class="nav navbar-nav navbar-isCorrect">
                         <li><a href="/cabinet/index1.html">Старая версия</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->

@@ -34,7 +34,7 @@
                                     <img style="align-content: flex-end" src="/img/yoda.png">
                                 </div>
                                 <div class="span8">
-                                    <blockquote class="pull-right">
+                                    <blockquote class="pull-isCorrect">
                                         <p>Patience you must have</p>
 
                                         <p>working with JON</p>

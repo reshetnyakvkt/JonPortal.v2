@@ -32,7 +32,7 @@
                             <hr/>
                             <div class="row">
                                 <div class="span8">
-                                    <blockquote class="pull-right">
+                                    <blockquote class="pull-isCorrect">
                                         <p>Начиная занятия с новой группой, некоторое время</p>
 
                                         <p>Я стараюсь говорить на человеческом языке</p>

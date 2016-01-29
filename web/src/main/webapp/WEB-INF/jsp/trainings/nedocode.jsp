@@ -94,7 +94,7 @@
                         <br/>
                         <div class="row">
                             <div class="span8">
-                                <blockquote class="pull-right">
+                                <blockquote class="pull-isCorrect">
                                     <p>Лучший кувшин лепят всю жизнь.</p>
                                     <p>Высокая музыка неподвластна слуху.</p>
                                     <p>Великий образ не имеет формы.</p>
@@ -132,7 +132,7 @@
                         <br/>
                         <div class="row">
                             <div class="span8">
-                                <blockquote class="pull-right">
+                                <blockquote class="pull-isCorrect">
                                     <p>Очень трудно найти чёрную кошку в тёмной комнате, особенно когда её там нет.</p>
                                     <small>Конфуций</small>
                                 </blockquote>
@@ -194,7 +194,7 @@
                         <br/>
                         <div class="row">
                             <div class="span8">
-                                <blockquote class="pull-right">
+                                <blockquote class="pull-isCorrect">
                                     <p>Находясь на свету, нельзя ничего увидеть в темноте.</p>
                                     <p>Пребывая же в темноте, увидишь все, что находится на свету.</p>
                                     <small>Гуань Инь-цзы</small>

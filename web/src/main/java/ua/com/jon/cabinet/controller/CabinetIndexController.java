@@ -96,4 +96,7 @@ public class CabinetIndexController {
         Long groupId = Long.parseLong(groupIdParam);
         return (long)tasksService.getCourseRate(groupId);
     }
+
+
+
 }

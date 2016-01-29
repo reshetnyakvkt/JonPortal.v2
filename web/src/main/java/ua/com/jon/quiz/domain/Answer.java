@@ -10,12 +10,11 @@ import java.util.*;
  * Package quiz.domain
  */
 @Entity
-@Table(name = "ANSWER")
+@Table(name = "ANSWERS")
 public class Answer {
     @Id
-    @SequenceGenerator(name = "sequence_answer", sequenceName = "SEQ_ANSWER",
-            allocationSize = 1, initialValue = 1)
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "sequence_answer")
+//    @TableGenerator(name = "answerGen", allocationSize = 1, initialValue = 1)
+    @GeneratedValue(strategy = GenerationType.AUTO/*, generator = "answerGen"*/)
     @Column(name = "ANSWER_ID")
     private Long id;
 
@@ -28,7 +27,8 @@ public class Answer {
     @Column(name = "CREATE_DATE", length = 15)
     private Date createDate;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "QUESTION_ID")
     private Question question;
 
     public Answer() {
@@ -38,6 +38,12 @@ public class Answer {
     public Answer(Question question, String name, Boolean isCorrect) {
         this();
         this.question = question;
+        this.name = name;
+        this.isCorrect = isCorrect;
+    }
+
+    public Answer(String name, Boolean isCorrect) {
+        this();
         this.name = name;
         this.isCorrect = isCorrect;
     }

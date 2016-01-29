@@ -14,6 +14,7 @@
     <context:component-scan base-package="ua.com.jon.examinator.controller"/>
     <context:component-scan base-package="ua.com.jon.tasks.validator.controller"/>
     <context:component-scan base-package="ua.com.jon.auth.controller"/>
+    <context:component-scan base-package="ua.com.jon.quiz.controller"/>
 
     <context:property-placeholder location="classpath:/conf.properties" />
 

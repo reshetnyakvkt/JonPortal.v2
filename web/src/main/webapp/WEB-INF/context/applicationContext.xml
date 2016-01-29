@@ -12,6 +12,9 @@
         http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
     <bean class="com.jon.tron.context.AppConfig"/>
+    <import resource="data.xml"/>
+    <import resource="dispatcher-servlet.xml"/>
+    <import resource="security.xml"/>
     <!--<import resource="security.xml"/>-->
     <!--<annotation-driven />-->
     <context:component-scan base-package="ua.com.jon.common.service"/>
@@ -22,6 +25,10 @@
     <context:component-scan base-package="ua.com.jon.cabinet.server"/>
     <context:component-scan base-package="ua.com.jon.auth.service"/>
     <context:component-scan base-package="ua.com.jon.admin"/>
+    <!-- Quiz beans!-->
+    <context:component-scan base-package="ua.com.jon.quiz.dao"/>
+    <context:component-scan base-package="ua.com.jon.quiz.service"/>
+    <context:component-scan base-package="ua.com.jon.quiz.controller"/>
 
     <bean id="conf" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <!-- TODO move to resources -->

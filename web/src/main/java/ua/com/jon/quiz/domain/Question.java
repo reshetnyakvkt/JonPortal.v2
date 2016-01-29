@@ -9,23 +9,23 @@ import java.util.Set;
  * Package quiz.domain
  */
 @Entity
-@Table(name = "QUESTION")
+@Table(name = "QUESTIONS")
 public class Question {
     @Id
-    @SequenceGenerator(name = "sequence_question", sequenceName = "SEQ_QUESTION",
-            allocationSize = 1, initialValue = 1)
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "sequence_question")
-    @Column(name = "ID")
+ //   @TableGenerator(name = "questGen", initialValue = 101, allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.AUTO/*, generator = "questGen"*/)
+    @Column(name = "QUESTION_ID")
     private Long id;
 
     @Column (name = "NAME", length = 512)
     private String name;
 
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     @Column (name = "QUESTION_TYPE")
-    private QuestionType questionType;
+    private Type questionType;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "QUIZ_ID")
     private Quiz quiz;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "question")
@@ -38,7 +38,13 @@ public class Question {
     public Question() {
     }
 
-    public Question(Quiz quiz, Type quiestionType, String name) {
+    public Question(Type questionType, String name, Set<Answer> answerList) {
+        this.name = name;
+        this.questionType = questionType;
+        this.answerList = answerList;
+    }
+
+    public Question(Quiz quiz, Type questionType, String name) {
         this.quiz = quiz;
         this.questionType = questionType;
         this.name = name;
@@ -76,11 +82,11 @@ public class Question {
         this.name = name;
     }
 
-    public QuestionType getQuiestionType() {
+    public Type getQuiestionType() {
         return questionType;
     }
 
-    public void setQuiestionType(QuestionType quiestionType) {
+    public void setQuiestionType(Type quiestionType) {
         this.questionType = quiestionType;
     }
 }

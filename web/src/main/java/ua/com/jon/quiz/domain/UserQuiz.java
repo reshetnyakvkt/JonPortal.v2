@@ -10,7 +10,7 @@ import java.util.Date;
  * Created by Олег on 16.01.2016.
  */
 @Entity
-@Table(name = "USERS_QUIZES")
+@Table(name = "USERS_QUIZZES")
 public class UserQuiz {
     @Id
     @GeneratedValue(generator = "userQuizGen", strategy = GenerationType.IDENTITY)
