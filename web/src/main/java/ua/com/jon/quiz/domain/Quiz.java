@@ -1,9 +1,8 @@
 package ua.com.jon.quiz.domain;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
+import ua.com.jon.common.domain.Sprint;
 
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -11,26 +10,26 @@ import java.util.Set;
  * Created by Олег on 15.01.2016.
  */
 @Entity
-@Table(name = "QUIZES")
+@Table(name = "QUIZ")
 public class Quiz {
 
     @Id
-    @GeneratedValue(generator = "quizGen", strategy = GenerationType.TABLE)
+    @GeneratedValue(generator = "quizGen", strategy = GenerationType.IDENTITY)
     @TableGenerator(name = "quizGen", initialValue = 101, allocationSize = 1)
     @Column(name = "QUIZ_ID")
     private Long id;
 
-    @Column(name = "DESCTIPTION")
+    @Column(name = "DESCRIPTION")
     private String description;
 
     @Column(name = "TIME_LIMIT")
     private Long timeLimit;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "QUIZES_QUESTIONS", joinColumns = @JoinColumn(name = "QUIZ_ID"),
-            inverseJoinColumns = @JoinColumn(name = "QUESTION_ID"))
-    private Set<Question> questions = new LinkedHashSet<>();
+    @OneToOne(fetch = FetchType.EAGER)
+    private Sprint sprint;
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "quiz", orphanRemoval = true)
+    private Set<Question> questions = new LinkedHashSet<>();
 
     public Quiz() {
     }
@@ -66,7 +65,14 @@ public class Quiz {
         this.timeLimit = timeLimit;
     }
 
-    @JsonInclude(JsonInclude.Include.NON_NULL)
+    public Sprint getSprint() {
+        return sprint;
+    }
+
+    public void setSprint(Sprint sprint) {
+        this.sprint = sprint;
+    }
+
     public Set<Question> getQuestions() {
         return questions;
     }
@@ -74,7 +80,4 @@ public class Quiz {
     public void setQuestions(Set<Question> questions) {
         this.questions = questions;
     }
-
-
-
 }

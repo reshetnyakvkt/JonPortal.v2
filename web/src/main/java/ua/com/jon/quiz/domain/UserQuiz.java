@@ -13,7 +13,7 @@ import java.util.Date;
 @Table(name = "USERS_QUIZES")
 public class UserQuiz {
     @Id
-    @GeneratedValue(generator = "userQuizGen", strategy = GenerationType.TABLE)
+    @GeneratedValue(generator = "userQuizGen", strategy = GenerationType.IDENTITY)
     @TableGenerator(name = "userQuizGen", initialValue = 101, allocationSize = 1)
     @Column(name = "USER_QUIZ_ID")
     private Long id;

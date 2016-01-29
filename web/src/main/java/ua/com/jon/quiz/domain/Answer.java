@@ -15,15 +15,15 @@ public class Answer {
     @Id
     @SequenceGenerator(name = "sequence_answer", sequenceName = "SEQ_ANSWER",
             allocationSize = 1, initialValue = 1)
-    @GeneratedValue(strategy = GenerationType.TABLE, generator = "sequence_answer")
-    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "sequence_answer")
+    @Column(name = "ANSWER_ID")
     private Long id;
 
     @Column(name = "NAME", length = 512)
     private String name;
 
-    @Column(name = "RIGHT")
-    private Boolean right;
+    @Column(name = "CORRECT")
+    private Boolean isCorrect;
 
     @Column(name = "CREATE_DATE", length = 15)
     private Date createDate;
@@ -35,11 +35,11 @@ public class Answer {
         this.createDate = Calendar.getInstance().getTime();
     }
 
-    public Answer(Question question, String name, boolean right) {
+    public Answer(Question question, String name, Boolean isCorrect) {
         this();
         this.question = question;
         this.name = name;
-        this.right = right;
+        this.isCorrect = isCorrect;
     }
 
     public Long getId() {
@@ -74,11 +74,11 @@ public class Answer {
         this.question = question;
     }
 
-    public Boolean isRight() {
-        return right;
+    public Boolean getIsCorrect() {
+        return isCorrect;
     }
 
-    public void setRight(Boolean right) {
-        this.right = right;
+    public void setIsCorrect(Boolean isCorrect) {
+        this.isCorrect = isCorrect;
     }
 }

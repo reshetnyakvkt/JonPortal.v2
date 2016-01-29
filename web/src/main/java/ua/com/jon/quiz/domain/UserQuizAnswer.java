@@ -14,7 +14,7 @@ public class UserQuizAnswer {
     @Id
     @SequenceGenerator(name = "sequence_user_quiz_answer", sequenceName = "SEQ_USER_QUIZ_ANSWER",
             allocationSize = 1, initialValue = 1)
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private Long id;
 
