@@ -24,6 +24,8 @@
     <context:property-placeholder location="classpath:/conf.properties" />
 
     <jpa:repositories base-package="ua.com.jon.common.repository"/>
+    <context:component-scan base-package="ua.com.jon.quiz.dao"/>
+    <context:component-scan base-package="ua.com.jon.quiz.service"/>
 
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
@@ -36,6 +38,23 @@
 
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
         <constructor-arg ref="jpaDataSource"/>
+    </bean>
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="jpaDataSource"/>
+        <property name="packagesToScan">
+            <list>
+                <value>ua.com.jon.quiz.domain</value>
+                <value>ua.com.jon.common.domain</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <value>
+                hibernate.dialect=org.hibernate.dialect.MySQLDialect
+                hibernate.show_sql=true
+                hibernate.hbm2ddl.auto=update
+            </value>
+        </property>
     </bean>
 <!--
     <bean id="jpaDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
@@ -66,6 +85,7 @@
         <!--<property fileName="persistenceXmlLocation" value="/WEB-INF/data/persistence.xml"/>-->
         <!--<property fileName="persistenceUnitName" value="courcesPU"/>-->
         <property name="packagesToScan" value="ua.com.jon.common.domain"/>
+
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
                 <!--<property fileName="generateDdl" value="true" />-->
@@ -94,5 +114,11 @@
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory" />
     </bean>
+    <bean id="myTransactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+
+    <tx:annotation-driven transaction-manager="myTransactionManager"/>
 
 </beans>
