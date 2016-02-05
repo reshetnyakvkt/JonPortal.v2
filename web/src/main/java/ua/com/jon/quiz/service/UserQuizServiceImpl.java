@@ -41,4 +41,9 @@ public class UserQuizServiceImpl implements UserQuizService {
         return userQuizDao.findAll();
     }
 
+    @Transactional(readOnly = true)
+    public List<UserQuiz> findResultByUser(Long userId) {
+        return userQuizDao.findResultByUser(userId);
+    }
+
 }

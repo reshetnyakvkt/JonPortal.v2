@@ -66,4 +66,11 @@ public class UserQuizDaoImpl implements UserQuizDao {
         Query query = session.createQuery("from UserQuiz");
         return query.list();
     }
+
+    public List<UserQuiz> findResultByUser(Long userId) {
+        Session session = factory.getCurrentSession();
+        Query query = session.createQuery("from UserQuiz as uq where uq.user.id =:userId");
+        query.setParameter("userId", userId);
+        return query.list();
+    }
 }

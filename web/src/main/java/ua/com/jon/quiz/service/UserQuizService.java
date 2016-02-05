@@ -15,4 +15,5 @@ public interface UserQuizService {
     boolean update(UserQuiz userQuiz);
     boolean delete(UserQuiz userQuiz);
     List<UserQuiz> findAll();
+    List<UserQuiz> findResultByUser(Long userId);
 }
