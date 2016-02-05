@@ -45,6 +45,11 @@ public class CabinetIndexController {
         return "cabinet/index";
     }
 
+    @RequestMapping(value = "/cabinet/indexAng.html", method = RequestMethod.GET)
+    public String indexAngular(Model model) {
+        return "cabinet/indexAng";
+    }
+
     @RequestMapping(value = "/cabinet/userName", method = RequestMethod.GET)
     public @ResponseBody String userName() {
         return tasksService.getSpringUserName();
