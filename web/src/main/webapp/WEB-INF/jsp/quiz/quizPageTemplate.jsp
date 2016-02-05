@@ -11,8 +11,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Test Your Knowledge</title>
-    <link href="../css/quiz.css" rel="stylesheet" type="text/css">
-    <script src="../js/angular/angular.js"></script>
+    <%--<link href="../css/quiz.css" rel="stylesheet" type="text/css">--%>
+    <script src="../../../js/angular/angular.min.js"></script>
 </head>
 <body ng-app="QuizApp">
 
@@ -65,9 +65,9 @@
         </div>
     </div>
 </div>
-<script src="../js/angular/quizApp.js"></script>
-<script src="../js/angular/controllers/quizController.js"></script>
-<script src="../js/angular/services/quizes.js"></script>
+<script src="../../../js/quiz/angular/quizApp.js"></script>
+<script src="../../../js/quiz/angular/controllers/quizController.js"></script>
+<script src="../../../js/quiz/angular/services/quizes.js"></script>
 
 
 </body>

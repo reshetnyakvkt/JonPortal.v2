@@ -1,24 +1,17 @@
 /**
  * Created by Reshetnyak Viktor on 25.01.2016.
  */
-quizApp.controller("quizzesController", ['$scope', '$http',  function ($scope, $http){
+//quizApp.controller("quizzesController", ['$scope', '$http',  function ($scope, $http){
+quizApp.controller("quizzesController", function ($scope, $location, dataService){
     $scope.sprints;
     $scope.quizzes;
     $scope.newQuizText;
     $scope.newQuizLimit;
-    $scope.loaded = false;
 
-    $scope.conf={
-        timeout: 3500, //миллисекунд
-        tryCount: 0
-    };
-
-    $http.get('j_quizzes', $scope.conf).success(function(data, status, headers, config) {
-        $scope.quizzes = data[0];
-        $scope.sprints = data[1];
-        $scope.loaded = true;
-    }).error(function(data, status, headers, config) {
-        console.log("Ответ от сервера: " + status);
+    var promiseObj = dataService.getData();
+    promiseObj.then(function(value) {
+        dataService.setQuizzes( $scope.quizzes = value[0]);
+        $scope.sprints = value[1];
     });
 
     $scope.refreshNew = function(){
@@ -30,28 +23,32 @@ quizApp.controller("quizzesController", ['$scope', '$http',  function ($scope, $
         if (del_item === undefined) return;
         var idx = $scope.quizzes.indexOf(del_item);
         if (idx !== undefined && idx >= 0){
-            //$http.get('j_quiz_del', $scope.conf).
-            $http({method:'GET', url:'j_quiz_del', params: {'id': del_item.id}}).
-                success(function(data, status, headers, config) {
-                    if (data[0]) {
-                        $scope.quizzes.remove(idx);
-                    }
-            }).error(function(data, status, headers, config) {
-                console.log("Ответ от сервера: " + status);
-            });
 
+            dataService.delQuiz(del_item.id)
+                .then(function(value) {
+                    if (value[0]) {
+                        $scope.quizzes.remove(idx);
+                        dataService.setQuizzes($scope.quizzes);
+                    }
+                });
         }
     };
 
-    $scope.newQuiz = function(text, limit){
-        $http({method: 'GET', url: 'j_quiz_new', params: {text: text, limit: limit}}).success(function(data, status, headers, config) {
-            $scope.quizzes = data[0];
-            $scope.sprints = data[1];
-            $scope.refreshNew();
-        }).error(function(data, status, headers, config) {
-            console.log("Ответ от сервера: " + status);
-        })
+    $scope.newQuiz = function(text, limit, quizForm){
+        if(quizForm.$valid) {
+            var promiseObj = dataService.newQuiz(text, limit);
+            promiseObj.then(function(value) {
+                dataService.setQuizzes( $scope.quizzes = value[0]);
+                $scope.sprints = value[1];
+                $scope.refreshNew();
+            });
+        }
+    };
+
+    $scope.editQuiz = function(quiz){
+        dataService.setEditQuiz(quiz);
+        $location.path("editQuiz");
     };
 
     $scope.refreshNew();
-}]);
+});

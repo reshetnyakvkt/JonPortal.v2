@@ -61,8 +61,6 @@ public class QuizDaoImpl implements QuizDao {
     }
 
     public List<Quiz> findAll() {
-        Session session = factory.getCurrentSession();
-        Query query = session.createQuery("from Quiz");
-        return query.list();
+        return factory.getCurrentSession().createQuery("FROM Quiz").list();
     }
 }

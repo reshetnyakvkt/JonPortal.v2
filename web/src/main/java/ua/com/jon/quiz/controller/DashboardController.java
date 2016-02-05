@@ -17,9 +17,14 @@ public class DashboardController {
     public DashboardController() {
     }
 
-    @RequestMapping(value = "/dashboard", method = {RequestMethod.GET, RequestMethod.HEAD})
-    public String logout(HttpServletRequest request) {
-
+    @RequestMapping(value = "/quiz/dashboard", method = {RequestMethod.GET, RequestMethod.HEAD})
+    public String dashboard(HttpServletRequest request) {
         return "/dashboard";
     }
+
+    @RequestMapping(value = "/quiz/quizPageTemplate", method = {RequestMethod.GET, RequestMethod.HEAD})
+    public String quizPageTemplate(HttpServletRequest request) {
+        return "/quiz/quizPageTemplate";
+    }
+
 }
