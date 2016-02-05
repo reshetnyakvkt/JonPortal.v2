@@ -1,0 +1,32 @@
+
+<div>
+    <table align="center" class="userForm">
+        <tr>
+            <td><input type="radio" ng-model="user.role" value="STUDENT" name="Student"></td>
+            <td>Student</td>
+        </tr>
+        <tr>
+            <td><input type="radio" ng-model="user.role" value="ADMIN" name="Administrator"></td>
+            <td>Administrator</td>
+        </tr>
+        <tr>
+            <td>Login:</td>
+            <td><input ng-model="user.login"></td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td><input type="password" ng-model="user.password"></td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td><input ng-model="user.email"></td>
+        </tr>
+        <tr>
+            <td><button ng-click="createUser()">Submit</button></td>
+        </tr>
+
+        <tr style="color: red" ng-show="errorMsg">
+            <td colspan="2">{{errorMsg}} </td>
+        </tr>
+    </table>
+</div>

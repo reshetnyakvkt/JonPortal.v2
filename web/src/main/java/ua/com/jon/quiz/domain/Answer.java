@@ -1,5 +1,7 @@
 package ua.com.jon.quiz.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -12,9 +14,9 @@ import java.util.*;
 @Entity
 @Table(name = "ANSWERS")
 public class Answer {
+
     @Id
-//    @TableGenerator(name = "answerGen", allocationSize = 1, initialValue = 1)
-    @GeneratedValue(strategy = GenerationType.AUTO/*, generator = "answerGen"*/)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ANSWER_ID")
     private Long id;
 
@@ -26,6 +28,7 @@ public class Answer {
 
     @Column(name = "CREATE_DATE", length = 15)
     private Date createDate;
+
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "QUESTION_ID")
@@ -72,6 +75,7 @@ public class Answer {
         this.name = name;
     }
 
+    @JsonIgnore
     public Question getQuestion() {
         return question;
     }
@@ -86,5 +90,14 @@ public class Answer {
 
     public void setIsCorrect(Boolean isCorrect) {
         this.isCorrect = isCorrect;
+    }
+
+    @Override
+    public String toString() {
+        return "Answer{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", isCorrect=" + isCorrect +
+                '}';
     }
 }

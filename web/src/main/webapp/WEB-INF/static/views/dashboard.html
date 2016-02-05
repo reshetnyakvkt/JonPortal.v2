@@ -1,0 +1,20 @@
+
+<link href="../../css/style.css" rel="stylesheet" type="text/css">
+
+<div class="dash">
+    <div class="heading">{{currentUser.id}} {{currentUser.login}} </div>
+    <button ng-click="toProfilePage()">Profile</button><br/>
+    <button ng-show="isAdmin">Create quiz</button><br/>
+    <h2>Tests:</h2>
+    <h3>{{ readError }}</h3>
+    <div class="quizList" ng-repeat="quiz in quizList">
+        <div class="quizItem">
+            <h3>{{ 'Description: ' + quiz.description }}</h3>
+            <h3>{{ 'Questions: ' + quiz.questions.length }}</h3>
+
+            <button ng-click="goToQuiz($index + 1)">Go to the test</button><br/>
+            <button ng-show="isAdmin">Edit quiz</button>
+            <button ng-show="isAdmin">Delete quiz</button><br/>
+        </div>
+    </div>
+</div>

@@ -1,5 +1,7 @@
 package ua.com.jon.quiz.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -11,9 +13,9 @@ import java.util.Set;
 @Entity
 @Table(name = "QUESTIONS")
 public class Question {
+
     @Id
- //   @TableGenerator(name = "questGen", initialValue = 101, allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.AUTO/*, generator = "questGen"*/)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "QUESTION_ID")
     private Long id;
 
@@ -29,7 +31,7 @@ public class Question {
     private Quiz quiz;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "question")
-    private Set<Answer> answerList;
+    private Set<Answer> answerList = new HashSet<>();
 
     public static enum Type {
         SINGLE_CHOICE, MULIT_CHOICE
@@ -50,6 +52,13 @@ public class Question {
         this.name = name;
     }
 
+    public Question(String name, Type questionType, Quiz quiz, Set<Answer> answerList) {
+        this.name = name;
+        this.questionType = questionType;
+        this.quiz = quiz;
+        this.answerList = answerList;
+    }
+
     public Long getId() {
         return id;
     }
@@ -58,6 +67,7 @@ public class Question {
         this.id = id;
     }
 
+    @JsonIgnore
     public Quiz getForm() {
         return quiz;
     }
@@ -88,5 +98,13 @@ public class Question {
 
     public void setQuiestionType(Type quiestionType) {
         this.questionType = quiestionType;
+    }
+
+    @Override
+    public String toString() {
+        return "Question{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

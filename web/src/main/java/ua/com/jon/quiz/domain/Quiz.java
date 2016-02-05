@@ -1,8 +1,10 @@
 package ua.com.jon.quiz.domain;
 
+import org.hibernate.annotations.GeneratorType;
 import ua.com.jon.common.domain.Sprint;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -14,8 +16,7 @@ import java.util.Set;
 public class Quiz {
 
     @Id
-    @GeneratedValue(/*generator = "quizGen", */strategy = GenerationType.AUTO)
-//    @TableGenerator(name = "quizGen", initialValue = 101, allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "QUIZ_ID")
     private Long id;
 
@@ -29,9 +30,14 @@ public class Quiz {
     private Sprint sprint;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "quiz", orphanRemoval = true)
-    private Set<Question> questions = new LinkedHashSet<>();
+    private Set<Question> questions = new HashSet<>();
 
     public Quiz() {
+    }
+
+    public Quiz(String description, Long timeLimit) {
+        this.description = description;
+        this.timeLimit = timeLimit;
     }
 
     public Quiz(String description, Long timeLimit, Set<Question> questions) {
@@ -86,5 +92,14 @@ public class Quiz {
 
     public void setQuestions(Set<Question> questions) {
         this.questions = questions;
+    }
+
+    @Override
+    public String toString() {
+        return "Quiz{" +
+                "timeLimit=" + timeLimit +
+                ", id=" + id +
+                ", description='" + description + '\'' +
+                '}';
     }
 }
